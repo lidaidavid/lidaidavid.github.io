@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Stratified Inequality in Meritocratic Selection</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dai Li, Yizhen Wang, Yanqing Ding" />
+    <link href="libs/remark-css-0.0.1/pku.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/pku-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Stratified Inequality in Meritocratic Selection
+## Ethnic Inequality in Higher Education in China
+### Dai Li, Yizhen Wang, Yanqing Ding
+### Peking University
+### updated: 2019-08-04
+
+---
+
+class: inverse, center, middle
+
+
+
+
+
+# Motivations
+
+---
+class: center
+background-image: url("https://lidaidavid.github.io/asa/asa_motivations.png")
+background-position: center
+background-size: cover
+---
+class: inverse, center, middle
+
+# Data and methods
+
+---
+
+# Universe: National College Entrance Examination (NCEE) participants
+
+### A complete dataset from a central province in 2014, it contains all students from this province who took the tests.
+### Artistic or athletic majors are excluded because test scores don't decide their results.
+### Students with 0 scores are excluded for being irrelevant to this research.
+### A total of 56,390 students remain, roughly 90% of all students.
+### Limited by the length of this presentation, I will only discuss natural sciences students, 37,599 in total. The results are robust for social sciences students.
+
+---
+
+# Variables: ethnicity, sex, hukou status; test scores, admissions
+
+### The majority is Han. Hui (a muslim people) makes 27.5% of students. Other mitorities make 0.8% of students.
+### 42.6% of all students are female. 59.2% are of rural hukou status.
+### Hui students are awarded 20 bonus points, other minorities 10 points. All students from a designated poverty area are awarded an additional 10 points.
+### The total score plus bonus points becomes the .red[effective score], which determines admissions. Students with higher effective scores have strict priority over students with lower scores in admission.
+### Results: 22.7% admitted into tier 1 universities, 17.3% into tier 2 universities, 13.1% into tier 3 universities, and 30% into vocatioanl schools.
+---
+background-image: url("https://lidaidavid.github.io/asa/table1.png")
+background-position: center
+background-size: contain
+---
+
+# Defining the dependent variable
+
+.pull-left-60[
+
+### Approach .red[1]: conventionally, the dependent variable is defined as "admitted by college or not". Some studies (eg. Wu 2016) further breaks it down to several levels, yet the granularity is still lacking. 
+
+### Approach .red[2]: Instead of using categories of colleges, I define the dependent variable as "effective score exceeding x". This provides much finer granularity since x can be any interger from 1 to 749.
+
+### If admissions are purely .red[meritocratic], then 1) any student whose effective score exceeds the threshold (lowest effective score of all admitted students) of a given category of college is admitted into that category or above; 2) any student with lower score is not admitted into that category or above.
+
+### If admissions are purely .red[meritocratic], then Approach .red[1] is a subset of Approach .red[2]. Approach .red[2] will be stricly superior because it doesn't lose information while providing finer granularity. 
+]
+
+.pull-right-40[
+&lt;img src="https://lidaidavid.github.io/asa/asa_college_breakdown.png" width="180%" /&gt;
+]
+
+---
+# Hypotheses
+
+### Based on previous discussions, this article tests the following hypothese:
+
+### Hypothesis 1: minority students are disadvantaged academically compared to Han students;
+
+### Hypothesis 2: the bonus point policy affect minorities chances of admission positively;
+
+### Hypothesis 3: admissions are purely meritocratic.
+
+---
+
+# Methods: logit models in iterations
+
+### The dependent variable is a binary one. Logit models, or logistic regression analysis, is a common tool to analyze binary dependent variables. It is in the family of Generalized Linear Models, on which I find some great notes from [Germán Rodríguez(2007)](https://data.princeton.edu/wws509/notes).
+
+- model 1: 
+`$$logit(\pi_{admission}) = \eta + \alpha_1 Hui + \alpha_2 Other Minority$$`
+
+- model 2: 
+`$$logit(\pi_{admission}) = \eta + \alpha_1 Hui + \alpha_2 Other Minority + \beta Female + \gamma Rural$$`
+- model 3: 
+`$$logit(\pi_{admission}) = \eta + \alpha_1 Hui + \alpha_2 Other Minority + \beta Female + \gamma Rural + \alpha_1 \beta Hui*Female +$$`
+`$$\alpha_2 \beta Other*Female + \alpha_1 \gamma Hui*Rural + \alpha_2 \gamma Other*Rural$$`
+
+### In Approach 1 admission is defined with tier 1, 2, 3 and vocational schools. In Approach 2 admission is defined from 1 to 749 for each model. The results are compared to test Hypothsis 3.
+---
+class: inverse, center, middle
+
+# Results
+
+---
+background-image: url("https://lidaidavid.github.io/asa/asa_luqu1.jpg")
+background-position: center
+background-size: contain
+---
+background-image: url("https://lidaidavid.github.io/asa/table2.png")
+background-position: center
+background-size: contain
+---
+background-image: url("https://lidaidavid.github.io/asa/table3.png")
+background-position: center
+background-size: contain
+---
+background-image: url("https://lidaidavid.github.io/asa/asa_control_effect_rank_like.jpg")
+background-position: center
+background-size: contain
+---
+
+# Conclusions
+
+### Hypothesis 3 is largely accruate for students above tier 2 threshold. It's reasonable to substitute actual admissions by "effective score exceeding x" if x is greater than tier 2 threshold. Following discussions are restricted to students above tier 2 threshold.
+### Hypothesis 1 is not true. 
+- Inequality is different depending on which point is defined as the selection threshold.
+- Hui are disadvantaged academically for all thresholds above tier 2. Other minorities are advantaged academically for most threholds.
+
+### Hypothesis 2 is true yet too simplistic.
+- All minorities are advantaged in admissions above tier 2 due to bonus point policy. Non-Hui minorities didn't need the policy to begin with.
+- The effects of the policy are different for students at different stratum. High achieving minorities may benefit the most from this policy, while supposedly they suffer the least from being a minority.
+
+### In conclusion, inequality is threhold-dependent and stratified, and uniform policies can lead to unintended, non-uniform consequences.
+---
+# Reflections
+
+### In Figure 2, ethnic inequalities are not significant at tier 2 threshold. Yet in Table 2 minorites are advantaged being admitted into tier 2 or above. This is due to preferential admission to specialized programs or univerisities such as Minzu University of China. In my forthcoming work I have discussed this issue further. 
+
+### This data is not nationally representative. However, I would argure automatically dismissing this research is wrong. In Li (2019) I have illustrated that in China, most survey data are either incapable of shedding light on educatioanl inequailty with finer granularity, or .red[biased]. On the other hand, since college admissions are executed centrally on a provincial level, and this is the complete data on the admissions, at least it provides reliable insights and facts about one province in one year. 
+
+### Further more, the analytical procedures of this research is easily replicated if scholars have access to other admissions datasets. These datasets are administrative data from the Municipal Educational Examinations Authority(教育考试院) in each provinces. Scholars can contribute to the ongoing controversy of affirmative policies if the data can be shared on a wider scale.
+---
+# More on this topic
+
+Li, Dai, work in progress, Can Greater Male Variability Predict Gender Representation in Science?
+
+Li, Dai, Yizhen Wang, forthcoming, Uncertainty in College Admissions and Educational Inequality: evidence from a Chinese Province, Sociological Studies. [高考录取中的不确定性与教育不平等——以X省为例，社会学研究](http://www.shxyj.org/Magazine)
+
+Li, Dai, Yizhen Wang, forthcoming, Girls in Scientific Majors: sexual inequality in higher education and differences in choosing majors, Journal of Social Development. [科学专业中的女生——高等教育机会与专业选择的性别差异, 社会发展研究](http://shfzyj.com/)
+
+
+Li, Dai, 2019, Limitations of Using Target-Location Survey Data in Understanding Educational Inequality: The Case of Beijing College Students Panel Survey, Sociological Review of China, vol 3. [升学目标地数据研究教育机会不平等的局限性——以“首都大学生成长追踪调查”为例，社会学评论，第3期](http://src.ruc.edu.cn/CN/abstract/abstract241.shtml)
+
+Li, Dai, 2017, Threshold Dependent Inequality Caused by Education Expansion：The Case of National College Entrance Examination, Sociological Studies, vol 3. [阈值依赖的教育扩张与教育不平等，社会学研究，第3期](http://www.shxyj.org/Magazine/show/?id=18162)
+
+Dai Li is currently .red[head researcher] of the Product Center of [Tommorrow Advancing Life Education Group](http://en.100tal.com/). He is also a research fellow of Institute of Traditional Chinese Society Studies, Peking University. He holds a PhD from Sociology Department, Peking University. He also visited Princeton University as a graduate student.   
+Email: lidaipku@163.com
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
