@@ -1,0 +1,541 @@
+---
+title: "在线大班产品课程体系盘点"
+author: "学科产品中心"
+date: "`r format(Sys.time(), '%Y.%m.%d')`"
+output: 
+  html_document:
+    css: 
+    theme: united
+    highlight: kate
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+
+---
+
+```{r setup, include=FALSE}
+# default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+#  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+knitr::opts_chunk$set(echo = TRUE)
+#setwd("C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021 classes/")
+getwd()
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(extrafont)
+Sys.setlocale("LC_CTYPE", "Chinese")
+#font <- "STXihei"
+load("C:/0work/0tal/1 online_db/outputdata.RData")
+
+dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021 classes/"
+
+```
+
+# 课程产品基本形态分类
+
+## 按照网校语言体系对标式盘点
+
+网校从两个维度拆解课程，分别是“价格/服务”和“留存-转化”。“价格/服务”越高，意味着成本、客单价越高，两极分别是一对一产品和轻课产品。“留存-转化”是课程参数设定的两个不同目标，“转化”针对新用户，“留存”针对老用户。由此，网校把自己的产品分为以下类型，放入坐标系中。
+
+```{r 网校盘点框架, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("wangxiao1.png", sep = ""))
+```
+
+网校此前对自己产品线的盘点，体现在下图中
+    
+```{r 网校现有产品, echo=FALSE, fig.cap="网校现有产品", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("wangxiao2.png", sep = ""))
+```
+
+按照这一对标的逻辑，竞争队友的产品可用下图概括
+
+```{r 网校盘点队友, echo=FALSE, fig.cap="网校盘点队友", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("wangxiao3.png", sep = ""))
+```
+
+## 大班直播形态的四个基本参数
+
+网校最关注的是各家主力产品——大班直播课的情况。在研究了各家做出的实际产品形态后，可以归纳出大班直播课的四个基本参数：
+
++ 牵引逻辑：课程体系是牵引用户进行续报还是选修
++ 定价逻辑：课程定价是正价还是低于成本的低价逻辑
++ 体验逻辑：课程要素是否能配齐正价课要素，还是销售转化支配
++ 时间长短：课程是长期还是短期
+
+```{r 大班4分类, echo=FALSE, fig.cap="大班4分类", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("大班产品分类.png", sep = ""))
+```
+
+各家的秋季系统课，呈现出“正价+长期+系统课+要素配齐”的形态，是各家产品思路最集中的体现。在此基础上，调整其中某些基本参数，就能产出各类变体课程产品，例如：
+
++ 猿辅导暑期49元课：低价+长期+系统课+要素配齐
++ 猿辅导秋季49元课：低价+短期+专题课+要素配齐
++ 高途暑期50元课：低价+长期+系统课+要素配齐
++ 作业帮暑期50元课：低价+长期+系统课+要素配齐
++ 网校暑期49元课：低价+长期+专题课+要素配齐
+
+# 大班直播课典型产品设计的关键参数
+
+## 正价长期系统课的3大构成环节
+
+大班直播课的产品有“授课、学习、辅导”3大环节构成。目前，最充分的大班直播课形成了“大班授课、小班学习、私教辅导”的“三位一体”格局。
+
+```{r 三位一体, echo=FALSE, fig.cap="三位一体", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("三位一体.png", sep = ""))
+```
+
+3大环节中，大班授课和私教辅导的含义已有共识，下面对小班学习做一些解释。小班学习，意味着以下至少两个含义：
++ “小班”人最够少。如果“小班”的人数不少于学生在学校的班级规模，学生就感受不到“小”。因此，活跃用户50人以上很可能就不算是“小班”了
++ 如果“班”的身份感、边界感不强，就谈不上分班学习。不能让学生感到有班级学习氛围、班级社交氛围的话，就不叫“小班学习”。
+
+按照辅导老师提供的服务贴近学员的程度进行排序，辅导的形式有以下几种：
+
++ 个性服务：解答学生在校遇到的问题、给予心灵上的慰藉等等超预期的、私人性的、非标准化的服务
+
++ 专业服务：教学答疑、作业批改、发音纠正、分享资料等跟该科目专业教学相关的服务
+
++ 学管服务：提醒到课、组织打卡、发放优惠、反馈学情等等教学管理方面的服务
+
+学管服务可以完全机器人化，专业服务中1对多的部分基本可以机器人化，因此都会成为标配，不会让用户产生粘性。
+
+## 大班直播课的10大关键参数
+
+基于对大班直播课“三位一体”格局的认识以及对用户底层需求的理解，可以进一步推导产品的其他重要参数。下面归纳出10大关键参数用于刻画一款大班直播课产品的模式：
+
+```{r 大班直播, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_大班长期班.png", sep = ""))
+```
+
+其中，大班授课、小班学习、私教辅导三大环节根据对产品实际情况的观察归纳得出；教学标准化、互动程度、学生层次、师生匹配的程度根据体验进行主观评判；小时单价、学科分布和年级分布根据学科产品中心维护的“大班直播课程体系数据库”进行分析得出。
+
+
+## 大班直播课的价位临界值的确定 {.tabset .tabset-fade .tabset-pills}
+
+在此要说明对单价区分高、中、低的临界值标准是如何确定的。根据数据库中的价格整体分布情况，对小学（及学前）、初中、高中的课程小时单价进行了分析，发现区别低与中、中与高的临界点分别为：
+
++ 小学（及学前）：25元、50元
++ 初中：35元、50元
++ 高中：35元、60元
+
+### 小学
+
+```{r 小学价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("price_ele.png", sep = ""))
+```
+
+### 初中
+```{r 初中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("price_jr.png", sep = ""))
+```
+
+### 高中
+```{r 高中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("price_sr.png", sep = ""))
+```
+
+
+## 猿辅导的重服务模式 {.tabset .tabset-fade .tabset-pills}
+
+猿辅导：猿辅导的模式特色是重服务。
+重服务体现在：
+
++ 辅导在标准化的学管和一对多的专业服务之外，大量提供一对一的专业服务（秋季承诺1对1视频答疑）
++ 辅导不但跟课还跟班，营造班级氛围
++ 辅导承诺在课期间，学生有任何问题都可以提供一对一辅导，包括在公立校的学习问题、生活问题（个性服务）
+
+可行性：
+
++ 猿辅导的小班班额30人，由于有托实际上不足30人。辅导老师一门课最多服务3个班，90人以下
++ 猿辅导的系统工具给主讲分班表扬、辅导老师跟班上课提供支持，营造小班学习氛围
+
+
+### 小学
+
+```{r yfd小学价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_yfd1.png", sep = ""))
+```
+
+### 初中
+```{r yfd初中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_yfd2.png", sep = ""))
+```
+
+### 高中
+```{r yfd高中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_yfd3.png", sep = ""))
+```
+
+
+## 高途的名师包干模式 {.tabset .tabset-fade .tabset-pills}
+
+高途的模式特色是名师包干制。特色主要有：
+
++ 追求大班额、高定价，核心是名师，名师的点在于“保证提分”。因此，教学标准化低，为凑大班极少分层
+    
++ 数据不好的主讲赶紧下课，为了数据好，销售和辅导根据用户反馈不断指导、调教主讲（近乎增长黑客思维）
+
++ 辅导销售动作比重大，专业服务以一对多的标准化服务（例如物料投送）为主
+
+可行性：
+
++ 体量较小，敢于红线起舞
++ 企业文化中新东方的影响较深，对名师大班课路线驾轻就熟
+
+
+
+### 小学
+
+```{r gt小学价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_gt1.png", sep = ""))
+```
+
+### 初中
+```{r gt初中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_gt2.png", sep = ""))
+```
+
+### 高中
+```{r gt高中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_gt3.png", sep = ""))
+```
+
+
+## 作业帮一课 -- 无明显特色的行业追随者 {.tabset .tabset-fade .tabset-pills}
+
+作业帮一课虽然学习猿辅导，但是课程体验没有Get到猿辅导的精髓:
+
++ 完全没有“小班学习”的模块，这是因为辅导不跟课、主讲不表扬、评论区总禁言
+
++ 辅导不够重、主讲不够名，在“大班授课”和“私教辅导”两个模块也缺乏特色
+
++ 课程体系较为复杂，英语有同步课有外教课，班型有很多层次
+
+### 小学
+
+```{r zyb小学价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_zyb1.png", sep = ""))
+```
+
+### 初中
+```{r zyb初中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_zyb2.png", sep = ""))
+```
+
+### 高中
+```{r zyb高中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_zyb3.png", sep = ""))
+```
+
+
+
+## 网校是行业领头羊 {.tabset .tabset-fade .tabset-pills}
+
++ 网校的教研能力最强，课程开发与供给能力突出，测评工具等也比较成熟
+
++ 网校的课程科目最丰富、总量最大、分层和版本最多，部分教材满足重点省份/城市本地化需求，规模化、有领头羊的气质
+
++ 在小班学习和私教辅导方面中规中矩但是有提升空间。但学而思网校的辅导跟课但不跟班，学生上课时会被随机分组，每次同组的人可能都不一样，学而思网校的辅导服务程度中等，三类服务都有涉及，其中高中的专属老师不提供专业服务但提供个性服务，在小班学习和私教辅导方面还有进步空间
+
+### 小学
+
+```{r xes小学价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_xes1.png", sep = ""))
+```
+
+### 初中
+```{r xes初中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_xes2.png", sep = ""))
+```
+
+### 高中
+```{r xes高中价格, echo=FALSE, fig.cap="网校产品盘点", out.width = '100%'}
+knitr::include_graphics(dir1 %>% paste("关键参数_xes3.png", sep = ""))
+```
+
+# 课程盘点：数量、价格、课节、时长
+
+## 课程数量对比{.tabset .tabset-fade .tabset-pills}
+
++ 各家都重视高LTV的小学，而高途特别重视高三
+
++ 各家都非常重视数学，高途相对平均
+
++ 猿辅导独家：道德与法治；网校独家：生化
+
++ 网校课程种类最多、覆盖最全，学前有语文和英语、初三就覆盖了政史地和生化
+
+### 总量
+
+```{r 课程总量, echo=FALSE}
+
+p0 <- plot_ly(x = whole$brand, y = whole$total,
+  type = "bar"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '秋季系统课程总数', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+        font=list(size = 14, color = "black"))
+
+p0
+```
+
+### 猿辅导
+```{r p1_yfd, echo=FALSE}
+p1_yfd <- plot_ly(
+  x = dt_yfd$class %>% levels(), y = dt_yfd$subject %>% levels(),
+  z = m1_yfd, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '猿辅导课程数量', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p1_yfd
+```
+
+### 高途
+```{r p1_gt, echo=FALSE}
+p1_gt <- plot_ly(
+  x = dt_gt$class %>% levels(), y = dt_gt$subject %>% levels(),
+  z = m1_gt, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '高途课程数量', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p1_gt
+```
+
+### 作业帮
+```{r p1_zyb, echo=FALSE}
+p1_zyb <- plot_ly(
+  x = dt_zyb$class %>% levels(), y = dt_zyb$subject %>% levels(),
+  z = m1_zyb, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '作业帮课程数量', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p1_zyb
+```
+
+### 网校
+```{r p1_wx, echo=FALSE}
+p1_wx <- plot_ly(
+  x = dt_wx$class %>% levels(), y = dt_wx$subject %>% levels(),
+  z = m1_wx, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '网校课程数量', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p1_wx
+```
+
+## 课程小时单价对比{.tabset .tabset-fade .tabset-pills}
+
++ 各家都呈现出年级越高、价格越低的趋势，只有高途的高中课程定价反而是最高的。这说明高中还有更多价值可以挖掘
+
++ K12课程单价的学科差异不大，主科微占优势；猿编程客单价极高
+
++ 网校的AE英语包含有外教课，课时单价其实很划算（可能是最便宜的），但是家长不一定感受的到
+
+### 猿辅导
+```{r p2_yfd, echo=FALSE}
+p2_yfd <- plot_ly(
+  x = dt_yfd$class %>% levels(), y = dt_yfd$subject %>% levels(),
+  z = m2_yfd, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '猿辅导课程小时单价', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+         annotations = list(x = "三年级", y = "编程",xref = "三年级", yref = "编程", showarrow = F, text = "注：编程单价113元左右"),
+    font=list(size = 14, color = "black"))
+
+p2_yfd
+```
+
+### 高途
+```{r p2_gt, echo=FALSE}
+p2_gt <- plot_ly(
+  x = dt_gt$class %>% levels(), y = dt_gt$subject %>% levels(),
+  z = m2_gt, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '高途课程单价', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p2_gt
+```
+
+### 作业帮
+```{r p2_zyb, echo=FALSE}
+p2_zyb <- plot_ly(
+  x = dt_zyb$class %>% levels(), y = dt_zyb$subject %>% levels(),
+  z = m2_zyb, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '作业帮课程单价', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p2_zyb
+```
+
+### 网校
+```{r p2_wx, echo=FALSE}
+p2_wx <- plot_ly(
+  x = dt_wx$class %>% levels(), y = dt_wx$subject %>% levels(),
+  z = m2_wx, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '网校课程单价', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p2_wx
+```
+
+## 课程节数对比{.tabset .tabset-fade .tabset-pills}
+
++ 猿辅导的课节数最多，其高一及以下年级为一个体系，搭配大量家长课、辅导课等内容；高二、高三为一个体系，正课之外赠送大量赠课（录播）、学习规划课（这些未记入课节数）
+
++ 高途和作业帮的课程安排比较清晰；作业帮因为小学英语有两个产品课节数比较复杂
+
++ 网校课程大多为15节（AE英语1单元包含3节课，一学期15单元）
+
+
+### 猿辅导
+```{r p3_yfd, echo=FALSE}
+p3_yfd <- plot_ly(
+  x = dt_yfd$class %>% levels(), y = dt_yfd$subject %>% levels(),
+  z = m3_yfd, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '猿辅导课节数', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p3_yfd
+```
+
+### 高途
+```{r p3_gt, echo=FALSE}
+p3_gt <- plot_ly(
+  x = dt_gt$class %>% levels(), y = dt_gt$subject %>% levels(),
+  z = m3_gt, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '高途课节数', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p3_gt
+```
+
+### 作业帮
+```{r p3_zyb, echo=FALSE}
+p3_zyb <- plot_ly(
+  x = dt_zyb$class %>% levels(), y = dt_zyb$subject %>% levels(),
+  z = m3_zyb, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '作业帮课节数', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p3_zyb
+```
+
+## 课程时长对比{.tabset .tabset-fade .tabset-pills}
+
++ 各家都呈现出小低年级时间短、初中时间最长的情况。
+
+前者是学生注意力决定的，后者是由于高中生时间更紧张。有初中家长反映目前的时间仍然太长，孩子坐不住。由于监督性，这对课程趣味性、互动性提出更高要求。
+
++ 猿辅导课时分布较为复杂，高二、高三为独立体系；高途课时体系除了小低年级外都一样
+
++ 网校课时分布比较平均，AE英语1单元3节课，总时间要减掉外教课两节每节40分钟
+
+### 猿辅导
+```{r p4_yfd, echo=FALSE}
+p4_yfd <- plot_ly(
+  x = dt_yfd$class %>% levels(), y = dt_yfd$subject %>% levels(),
+  z = m4_yfd, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '猿辅导课长（分钟）', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p4_yfd
+```
+
+### 高途
+```{r p4_gt, echo=FALSE}
+p4_gt <- plot_ly(
+  x = dt_gt$class %>% levels(), y = dt_gt$subject %>% levels(),
+  z = m4_gt, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '高途课长（分钟）', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p4_gt
+```
+
+### 作业帮
+```{r p4_zyb, echo=FALSE}
+p4_zyb <- plot_ly(
+  x = dt_zyb$class %>% levels(), y = dt_zyb$subject %>% levels(),
+  z = m4_zyb, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '作业帮课长（分钟）', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p4_zyb
+```
+
+### 网校
+```{r p4_wx, echo=FALSE}
+p4_wx <- plot_ly(
+  x = dt_wx$class %>% levels(), y = dt_wx$subject %>% levels(),
+  z = m4_wx, type = "heatmap"
+) %>%
+  layout(paper_bgcolor = 'transparent',
+         title = list(text = '网校课长（分钟）', font = list(size = 28, color="black"), x = 0.2, y = 0.8),
+    font=list(size = 14, color = "black"))
+
+p4_wx
+```
+
+# 课程盘点：教材版本、难度分级情况
+
+## 教材版本的年级分布{.tabset .tabset-fade .tabset-pills}
+
+### 猿辅导
+```{r table_yfd, echo=FALSE}
+knitr::kable(edition_yfd)
+```
+
+### 作业帮
+```{r table_zyb, echo=FALSE}
+knitr::kable(edition_zyb)
+```
+
+### 网校
+```{r table_wx, echo=FALSE}
+knitr::kable(edition_wx)
+```
+
+## 难度分层的年级分布{.tabset .tabset-fade .tabset-pills}
+
+### 猿辅导
+```{r diff_yfd, echo=FALSE}
+knitr::kable(diff_yfd)
+```
+
+### 作业帮
+```{r diff_zyb, echo=FALSE}
+knitr::kable(diff_zyb)
+```
+
+### 网校
+```{r diff_wx, echo=FALSE}
+knitr::kable(diff_wx)
+```
+
+
