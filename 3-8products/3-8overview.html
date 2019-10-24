@@ -233,7 +233,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">3-8赛道产品扫描简报</h1>
 <h4 class="author">学科产品部</h4>
-<h4 class="date">2019.10.23</h4>
+<h4 class="date">2019.10.24</h4>
 
 </div>
 
@@ -243,7 +243,12 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 </script>
-<p>＜script language=“javascript”＞function click() {if (event.button==2) {alert(‘no right click’) }}document.onmousedown=click＜/script＞</p>
+<script>
+    window.oncontextmenu = function () {
+        console.log("Right Click Disabled");
+        return false;
+    }
+</script>
 <div id="产品基本参数" class="section level2 tabset tabset-fade tabset-pills">
 <h2>产品基本参数</h2>
 <div id="英语" class="section level3">
