@@ -1,0 +1,205 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={关于进一步深化网校学生转化行为研究的建议},
+            pdfauthor={学科产品部},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{关于进一步深化网校学生转化行为研究的建议}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{学科产品部}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019.10.29}
+
+
+\begin{document}
+\maketitle
+
+\section{研究问题}\label{ux7814ux7a76ux95eeux9898}
+
+\subsection{\texorpdfstring{哪些因素会影响学生的\textbf{转化}行为？}{哪些因素会影响学生的转化行为？}}\label{ux54eaux4e9bux56e0ux7d20ux4f1aux5f71ux54cdux5b66ux751fux7684ux8f6cux5316ux884cux4e3a}
+
+\begin{itemize}
+\item
+  学生的转化行为会受若干因素影响。网校近期进行的专项研究，已经详实地描述了学生自身条件、所报课程的学科及产品设计、主讲老师和辅导老师的服务等重要因素都可能对学生的转化行为产生影响。
+\item
+  在此基础上，可以进一步采取\textbf{逻辑斯蒂回归}的方法，通过控制变量，进一步剖析各类因素对学生转化行为的影响程度，为决策提供依据。
+\end{itemize}
+
+\section{研究方法}\label{ux7814ux7a76ux65b9ux6cd5}
+
+\subsection{逻辑斯蒂回归}\label{ux903bux8f91ux65afux8482ux56deux5f52}
+
+\textbf{逻辑斯蒂回归}是指广义线性模型（GLM）中的逻辑斯蒂回归（logistic
+regression or logit
+model），用于研究的``哪些因素会影响一个事件发生与否的可能性''。``学生转化与否''就是一个典型的二分类变量，适合采用逻辑斯蒂回归进行分析。
+
+\subsection{其他方法}\label{ux5176ux4ed6ux65b9ux6cd5}
+
+考虑到学生有生命周期、变量有多个层次、同班级之间可能会相互影响，还可以考虑生存分析（survival
+analysis）、层级模型（hierarchical model）和社会网络分析（social network
+analysis）等更加复杂的方法。这些方法可以在时间更加充裕的条件下进行探索。
+
+\subsection{为什么不采用机器学习模型}\label{ux4e3aux4ec0ux4e48ux4e0dux91c7ux7528ux673aux5668ux5b66ux4e60ux6a21ux578b}
+
+机器学习方法善于进行预测而非寻找因果关系。要解释转化行为受哪些因素影响、受这些因素多大影响不是典型的机器学习任务，更适合用社会科学研究方法进行研究。
+
+\section{模型构建}\label{ux6a21ux578bux6784ux5efa}
+
+\subsection{模型I：重辅导对学生转化是否有显著影响？}\label{ux6a21ux578biux91cdux8f85ux5bfcux5bf9ux5b66ux751fux8f6cux5316ux662fux5426ux6709ux663eux8457ux5f71ux54cd}
+
+\begin{itemize}
+\item
+  根据业务伙伴的认知，提出假设：辅导老师的服务加重会对学生转化行为产生积极影响
+
+  \begin{itemize}
+  \item
+    因变量：学生的转化行为。转化 = 新学员 且 上过优选课 且
+    续报下一季系统课程
+  \item
+    自变量：在优选课期间的辅导老师与其进行私聊的次数/文字长度/个性程度 +
+    是否进行过视频/音频一对一 +
+    在群运营中@该学生的次数/文字长度/个性程度 +
+    给该学生发送物料总次数/个性程度
+  \item
+    控制变量：学生的城市（级别、人均gdp、区域） + 学生性别 + 学生年级 +
+    家庭经济状况 + 学生学习水平 + 报课学科 + 课程难度 + 教材版本
+  \end{itemize}
+\end{itemize}
+
+\subsection{模型II：辅导和主讲谁对转化的效应更大？}\label{ux6a21ux578biiux8f85ux5bfcux548cux4e3bux8bb2ux8c01ux5bf9ux8f6cux5316ux7684ux6548ux5e94ux66f4ux5927}
+
+\begin{itemize}
+\item
+  上一个模型中没有控制主讲老师的相关变量，结论可能是不准确的。业务伙伴还会关心的问题：主讲和辅导谁对转化行为的影响更大？
+\item
+  在保持前述模型不变的情况下，加入主讲相关的研究变量，就可以在控制了辅导老师的效应之余，测量主讲的影响。二者比较，就可以看出主讲和辅导谁的效果更大。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    增加变量：主讲素质（入职时长/课时费） +
+    是否在课程中与主讲互动过（被点名表扬etc）+ 主讲课上互动次数（时间）
+    + 主讲与学生私下交流的次数
+  \end{itemize}
+\end{itemize}
+
+\section{实施方案}\label{ux5b9eux65bdux65b9ux6848}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  用SQL调取网校现有140万学生的个体数据，并根据研究需要进行初步数据清理和结构化。下面进行分析的数据是学生个体层面数据，对应着为其服务的主讲、辅导老师等人员。
+\item
+  从全量数据中随机抽取1\%的样本，形成测试数据，便于研究者在个人电脑上跑通数据分析的流程代码。
+\item
+  根据学生对应的辅导老师，从辅导老师微信聊天记录库中调取这个老师和他的聊天记录（群中@该学生的记录），并采用文本分析模型将老师与这个学生交流的次数、长度、个性化程度计算出来，再匹配给该学生。同理可以调取主讲老师的类似数据。
+\item
+  利用Python对数据进行逻辑斯蒂回归模型的分析，检验各变量的影响，利用AIC、BIC等统计标准寻找最优模型。
+\item
+  在技术专家协助下将优化的分析代码部署到服务器上，对全量数据进行分析，得出对转化行为受哪些因素影响、受多大影响的准确认知。
+\item
+  由于上述过程都是通过代码实现的，完成之后可以直接常态化，每个季度对数据进行重复分析，监测变化。
+\end{enumerate}
+
+\section{输出结果}\label{ux8f93ux51faux7ed3ux679c}
+
+逻辑斯蒂回归模型输出的结果，可以解释\textbf{事件发生与否}受哪些因素影响、受这些因素多大影响。
+
+逻辑斯蒂回归输出的是一组变量系数及其显著性。系数的正负，表示的是相应的因素对\textbf{转化}的影响是正的还是负的；系数的大小，表示相应因素对\textbf{转化}的影响幅度有多大；显著性表示这一关系有多可靠。
+
+例如，一个简单的模型是：
+
+\[ 转化 = \alpha * 主讲教龄 + \beta * 辅导私聊次数 + \epsilon\]
+如果\(\alpha\)为正且显著，意味着主讲教龄越大转化发生的可能性就越大；\(\beta\)为正且显著，意味着辅导跟学生私聊次数越多转化发生的可能性越大。\(\alpha\)
+和 \(\beta\)
+都有确切的含义，表示\textbf{比数比的对数}，可以转化为类似``主讲教龄每增加一岁，学生转化行为发生的可能性增加\(x%\)''这样的表述。
+
+而且，上述模型还有一个含义是``在控制了变量的前提下''，也就是说，这里测量出的主讲教龄的影响是在这个学生接受辅导私聊次数一样多的情况下得到的结果，所以不会混淆主讲教龄和辅导私聊次数这两个变量的影响。
+
+\section{评估结论}\label{ux8bc4ux4f30ux7ed3ux8bba}
+
+\begin{itemize}
+\item
+  基于网校现有专项研究的初步结论，利用网校现有的存量数据，可以对研究问题进行初步分析，采用逻辑斯蒂回归模型取得初步的结果。研究方法可以适用到其他能够转化为是否问题的变量上，例如``是否续报''、``是否退费''、``是否扩科''等等。
+\item
+  在对存量数据进行盘点、与技术专家进行咨询之前，难以判断研究投入的时间与资源规模。目前初步判断，如果研究团队有专人全职进行分析，数据资源到位，要花的时间在1个月到6个月之间。使用代码进行分析的好处是跑通之后可以常态化，每隔一段时间重新筛选数据重复分析，监测影响因素是否发生变化，而每季度的边际成本很低。
+\item
+  总之，对网校存量数据进行初步的统计分析对理解用户需求、澄清转化机制、指导网校决策有重大价值，建议组建专家团队用社会科学方法开展研究。
+\end{itemize}
+
+
+\end{document}

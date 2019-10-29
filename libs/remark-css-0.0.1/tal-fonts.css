@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Hind|Lusitana|Inconsolata|Noto Sans SC|Noto Serif SC|Zhi Mang Xing|Liu Jian Mao Cao|Long Cang|Ma Shan Zheng|ZCOOL QingKe HuangYou|ZCOOL XiaoWei|ZCOOL KuaiLe");
+
+body {
+  font-family: "Noto Serif SC", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Ma Shan Zheng", serif;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: "Inconsolata", monospace;
+}

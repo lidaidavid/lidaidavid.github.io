@@ -1,0 +1,225 @@
+---
+title: "基于Rmarkdown的研究交付工作流程"
+author: "学科产品部"
+date: "`r format(Sys.time(), '%Y.%m.%d')`"
+output: 
+  html_document:
+    css: 
+    theme: lumen
+    highlight: kate
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+---
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+
+<script>
+    window.oncontextmenu = function () {
+        console.log("Right Click Disabled");
+        return false;
+    }
+</script>
+
+```{r setup, include=FALSE}
+# default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+#  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+knitr::opts_chunk$set(echo = TRUE)
+#setwd("C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021 classes/")
+library(quantmod)
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(knitr)
+library(kableExtra)
+
+Sys.setlocale("LC_CTYPE", "Chinese")
+#font <- "STXihei"
+#load("C:/0work/0tal/1 online_db/outputdata.RData")
+options(knitr.kable.NA = '')
+
+dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/manual/"
+setwd(dir1)
+#dir1 <- "https://lidaidavid.github.io/manual/"
+
+#https://lidaidavid.github.io/3-8products/3-8overview.html
+
+dt <- mtcars[1:5, 1:6]
+```
+
+# 为什么要采用html格式交付研究报告？
+
+## 因为html本身有很多优点{.tabset .tabset-fade .tabset-pills}
+
+### 交互性
+
++ 用plotly制作美观可交互的图表: https://plot.ly/r/
+
+```{r jhx, echo=FALSE}
+
+# Download some data
+getSymbols(Symbols = c("AAPL", "MSFT"))
+
+ds <- data.frame(Date = index(AAPL), AAPL[,6], MSFT[,6])
+
+p <- plot_ly(ds, x = ~Date) %>%
+  add_lines(y = ~AAPL.Adjusted, name = "Apple") %>%
+  add_lines(y = ~MSFT.Adjusted, name = "Microsoft") %>%
+  layout(
+    title = "Stock Prices",
+    xaxis = list(
+      rangeselector = list(
+        buttons = list(
+          list(
+            count = 3,
+            label = "3 mo",
+            step = "month",
+            stepmode = "backward"),
+          list(
+            count = 6,
+            label = "6 mo",
+            step = "month",
+            stepmode = "backward"),
+          list(
+            count = 1,
+            label = "1 yr",
+            step = "year",
+            stepmode = "backward"),
+          list(
+            count = 1,
+            label = "YTD",
+            step = "year",
+            stepmode = "todate"),
+          list(step = "all"))),
+
+      rangeslider = list(type = "date")),
+
+    yaxis = list(title = "Price"))
+
+p
+
+df <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_us_cities.csv')
+
+df$q <- with(df, cut(pop, quantile(pop)))
+levels(df$q) <- paste(c("1st", "2nd", "3rd", "4th", "5th"), "Quantile")
+df$q <- as.ordered(df$q)
+
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showland = TRUE,
+  landcolor = toRGB("gray85"),
+  subunitwidth = 1,
+  countrywidth = 1,
+  subunitcolor = toRGB("white"),
+  countrycolor = toRGB("white")
+)
+
+p <- plot_geo(df, locationmode = 'USA-states', sizes = c(1, 250)) %>%
+  add_markers(
+    x = ~lon, y = ~lat, size = ~pop, color = ~q, hoverinfo = "text",
+    text = ~paste(df$name, "<br />", df$pop/1e6, " million")
+  ) %>%
+  layout(title = '2014 US city populations<br>(Click legend to toggle)', geo = g)
+
+p
+```
+
+### 扩展性
+
++ 用fireshot一键转化长图
+  - https://chrome.google.com/webstore/search/fireshot
+
++ 几行代码锁住右键增加盗图阻力
+
+```{r}
+#<script>
+#    window.oncontextmenu = function () {
+#        console.log("Right Click Disabled");
+#        return false;
+#    }
+#</script>
+```
+
++ 阅读量数据统计
+
++ 阅读者身份追踪
+
++ 阅读密级管理……都要依靠服务器实现
+
++ html是开放的系统，每天有无穷无尽的人在使用、试错、迭代，你想用它做的任何事可能都已经有人问过、作过、产品化、免费分享了。与之相对，office是封闭的系统，Microsoft没有开发的功能，就是没有
+
+### 美观性
+
++ 引用网络字体，避免“字体未安装”的问题
+
+  * 西文字体: google fonts
+
+  * 中文字体: 有字库 https://www.webfont.com/
+
+  * 中文字体: 阿里妈妈 https://www.iconfont.cn/
+
+  * 中文字体: 字蛛 http://font-spider.org/
+
++ 各种美观、现代的呈现形式
+
+  * 表格采用KableExtra: https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html
+
+```{r}
+iris[1:10, ] %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+  mutate(Species = cell_spec(
+    Species, color = "white", bold = T,
+    background = spec_color(1:10, end = 0.9, option = "A", direction = -1)
+  )) %>%
+  kable(escape = F, align = "c") %>%
+  kable_styling(c("striped", "condensed"), full_width = F)
+```
+
+## 生产html并不困难{.tabset .tabset-fade .tabset-pills}
+
+### 基于Rmarkdown产出文档、演示文稿
+
++ Markdown是一门常见的网络语言，把人容易理解的语句转化成html的编码，从而生成html文件。语雀、confluence都基于Markdown，其受欢迎程度日益增强
+
++ Rmarkdown是Markdown语言的一个变体，基于Rstudio，整合了R强大的数据分析和可视化能力，能够生成清晰、美观、交互性的研究报告。
+
+
+ * Rmarkdown的一篇基础教学知乎页面：https://zhuanlan.zhihu.com/p/24884324
+  
+
++ Xaringan是基于Rmarkdown的演示文稿生产语言，成果可以一定程度上模拟ppt、latex的效果。Rmarkdown和Xaringan的作者（之一）都是一名中国人谢益辉，因此有不少作者写作的中文教学文章。
+
+ 
+ * Rmarkdown、Xaringan的官方教学：https://bookdown.org/yihui/rmarkdown/xaringan.html
+  
+  
+ * Rmarkdown的速查手册：https://bookdown.org/yihui/rmarkdown/cheat-sheets.html
+
+### Rmarkdown跟ppt比的优势
+
+* 对于学术写作来说，Rmarkdown的最大优势在于整合了R的数据分析和可视化能力，把制图、制表整合到了写作当中，而且这些图表是可以交互的。此外，它引用了专业的公式写作引擎，能够精确书写非常复杂的数学公式
+
+* Rmarkdown把“内容”和“格式”完全分离开来，格式通过css模板来规定，只需要把格式标记到相应内容上就可以改变最终的呈现形式。这样，设计师可以专门设计模板，研究者专注于内容的写作，而且要改变格式只需要改变调用的css模板就可以了。由于Xaringan基于Rmarkdown，因此很容易在文档和演示文稿之间切换
+
+ + 由于设计基于css语言，可以确保颜色、字体、字号、位置、大小、页码等**完全精确、统一**，免除手调的烦恼
+
+* Rmarkdown生产的html文件向下兼容，可以方便地在chrome中保存成pdf文件、通过插件转成长图，多种形式交付成果
+
+* Rmarkdown 利用child命令调取子模块，因此便于管理整个文档的结构、进行团队分工。由于代码本质是文本文件，可以利用git进行版本管理，不至于出现修改过程中顾此失彼的协调困难
+
+ - 例如，两个人分别写上下篇，但是写上篇的改了下篇的某一页格式，利用git很容易识别出修改的地方从而确保最终成果是更新过的。同理，图片修改后保存在服务器上，代码调用的图片超链接不变，就能确保生成的文档图片是最新的
+
+* 一劳永逸，专业分工，团队协作
+
+* 参数化，写作过程中去调用，不用改一个数挨页翻找
+
+### Rmarkdown的学习难度

@@ -1,0 +1,202 @@
+---
+title: "3-8赛道产品扫描简报"
+author: "学科产品部"
+date: "`r format(Sys.time(), '%Y.%m.%d')`"
+output: 
+  html_document:
+    css: 
+    theme: lumen
+    highlight: kate
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: false
+---
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+
+<script>
+    window.oncontextmenu = function () {
+        console.log("Right Click Disabled");
+        return false;
+    }
+</script>
+
+```{r setup, include=FALSE}
+# default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+#  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+knitr::opts_chunk$set(echo = TRUE)
+#setwd("C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021 classes/")
+
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(knitr)
+library(kableExtra)
+
+Sys.setlocale("LC_CTYPE", "Chinese")
+#font <- "STXihei"
+#load("C:/0work/0tal/1 online_db/outputdata.RData")
+options(knitr.kable.NA = '')
+
+dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/3-8products/"
+setwd(dir1)
+#dir1 <- "https://lidaidavid.github.io/3-8products/"
+
+eng <- readxl::read_xlsx("dt3.xlsx", sheet = "eng")
+label_eng <- colnames(eng)
+colnames(eng) <- paste("v", seq(1, ncol(eng)), sep = "")
+eng <- eng %>% arrange(desc(v2))
+
+
+lit <- readxl::read_xlsx("dt3.xlsx", sheet = "lit")
+label_lit <- colnames(lit)
+colnames(lit) <- paste("v", seq(1, ncol(lit)), sep = "")
+lit <- lit %>% arrange(desc(v2))
+
+
+math <- readxl::read_xlsx("dt3.xlsx", sheet = "math") 
+label_math <- colnames(math)
+colnames(math) <- paste("v", seq(1, ncol(math)), sep = "")
+math <- math %>% arrange(desc(v2))
+
+#https://lidaidavid.github.io/3-8products/3-8overview.html
+
+col_eng1 <- c(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)
+col_eng2 <- c(2, 3, 4, 5, 6, 18, 19, 20, 21)
+eng1 <- eng[,col_eng1]
+eng2 <- eng[,col_eng2]
+
+col_lit1 <- c(2, 3, 8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+col_lit2 <- c(2, 3, 4, 5, 6, 7, seq(22, 29))
+lit1 <- lit[, col_lit1]
+lit2 <- lit[, col_lit2]
+
+col_math1 <- c(2, 3, 7,8,9,10,11,12,13,14,15,21)
+col_math2 <- c(2, 3, seq(4,6), seq(16, 20), 22, 23)
+math1 <- math[, col_math1]
+math2 <- math[, col_math2]
+
+```
+
+## 产品基本参数{.tabset .tabset-fade .tabset-pills}
+
+### 英语
+```{r eng1, echo = FALSE, message=FALSE}
+
+eng1 %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+
+
+knitr::kable(escape = F, col.names = label_eng[col_eng1]) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, font_size = 12, fixed_thead = list(enabled = T, background = "#DAEAFC")) %>%
+  column_spec(c(1,4,7,8,9,10), width = "4em") %>%
+  column_spec(2, width = "6em")
+# striped, bordered, hover, condensed and responsive
+```
+
+### 语文
+```{r lit1, echo = FALSE, message=FALSE}
+
+lit1 %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+
+
+knitr::kable(escape = F, col.names = label_lit[col_lit1]) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, font_size = 12, fixed_thead = list(enabled = T, background = "#DAEAFC")) %>%
+  column_spec(c(1,3,7,8,9,10,11), width = "4em") %>% 
+  column_spec(2, width = "6em")
+
+# striped, bordered, hover, condensed and responsive
+```
+
+### 数学思维
+```{r math1, echo = FALSE, message=FALSE}
+
+math1 %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+
+
+knitr::kable(escape = F, col.names = label_math[col_math1]) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, font_size = 12, fixed_thead = list(enabled = T, background = "#DAEAFC")) %>%
+  column_spec(c(1,4,7,8,9), width = "4em") %>%
+  column_spec(c(3, 10), width = "6em") %>%
+  column_spec(2, width = "6em")
+# striped, bordered, hover, condensed and responsive
+```
+
+
+## 产品模式与评价{.tabset .tabset-fade .tabset-pills}
+
+### 英语
+```{r eng2, echo = FALSE, message=FALSE}
+
+eng2 %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+
+
+knitr::kable(escape = F, col.names = label_eng[col_eng2]) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, font_size = 12, fixed_thead = list(enabled = T, background = "#DAEAFC")) %>%
+  column_spec(c(1,7,8), width = "4em") %>%
+  column_spec(c(4), width = "6em") %>%
+  column_spec(2, width = "6em")
+# striped, bordered, hover, condensed and responsive
+```
+
+### 语文
+```{r lit2, echo = FALSE, message=FALSE}
+
+lit2 %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+
+
+knitr::kable(escape = F, col.names = label_lit[col_lit2]) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, font_size = 12, fixed_thead = list(enabled = T, background = "#DAEAFC")) %>%
+  column_spec(c(1,7), width = "4em") %>% 
+  column_spec(c(4), width = "6em") %>%
+  column_spec(2, width = "6em")
+
+# striped, bordered, hover, condensed and responsive
+```
+
+### 数学思维
+```{r math2, echo = FALSE, message=FALSE}
+
+math2 %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+
+
+knitr::kable(escape = F, col.names = label_math[col_math2]) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, font_size = 12, fixed_thead = list(enabled = T, background = "#DAEAFC")) %>%
+  column_spec(c(1,4,7), width = "4em") %>%
+  column_spec(c(3, 4), width = "6em") %>%
+  column_spec(2, width = "6em")
+# striped, bordered, hover, condensed and responsive
+```

@@ -1,0 +1,212 @@
+
+:root {
+    --blue: #CDCBB0;
+    --orange: #B7A542;
+    --back: #252947;
+}
+
+.red {
+  color: var(--orange);
+
+}
+
+/*.remark-container {
+    height: 900px!important;
+    width: 1600px!important;
+  }
+*/
+
+/* Various left and right split columns*/
+
+.pull-left-70 { float: left; width: 66.5%; }
+.pull-right-30 { float: right; width: 28.5%; }
+.pull-right-30 ~ * { clear: both; }
+
+.pull-left-60 { float: left; width: 57%; }
+.pull-right-40 { float: right; width: 38%; }
+.pull-right-40 ~ * { clear: both; }
+
+.pull-left-50 { float: left; width: 47.5%; }
+.pull-right-50 { float: right; width: 47.5%; }
+.pull-right-50 ~ * { clear: both; }
+
+.pull-left-40 { float: left; width: 38%; }
+.pull-right-60 { float: right; width: 57%; }
+.pull-right-60 ~ * { clear: both; }
+
+.pull-left-30 { float: left; width: 28.5%; }
+.pull-right-70 { float: right; width: 66.5%; }
+.pull-right-70 ~ * { clear: both; }
+
+.pull-left-10 { float: left; width: 9.5%; }
+.pull-right-90 { float: right; width: 85.5%; }
+.pull-right-90 ~ * { clear: both; }
+
+
+/* headers and fonts*/
+h1, h2, h3 {
+  margin-top: 0;
+  padding-top: 0.5em;
+/*  font-family: 'Oswald';*/
+  font-weight: 400;
+  margin-left: 0;
+}
+
+body {
+  color: var(--orange)
+}
+
+
+.large {
+  font-size: 23px;
+}
+
+.small {
+  font-size: 15px;
+}
+
+/* content slide */
+
+.content-slide-1 {
+    background-color: var(--blue);
+    color: var(--back);
+    font-weight:400;
+    font-size:36px;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+.content-slide-0 {
+    font-weight:400;
+    font-size:30px;
+}
+
+
+/* regular slide */
+
+.remark-slide-content {
+  background-color: var(--back);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.2;
+  padding: 1em 3em 1em 3em;
+  background-image: url("https://lidaidavid.github.io/logo_big.png");
+  background-position: bottom 25px  right 100px;
+  background-size: 15%;
+}
+
+
+
+/* header colors are the same regardless of inverse or not*/
+
+
+.remark-slide-content h1, .inverse h1 {
+  color: var(--blue);
+  font-size: 35px;
+}
+
+.remark-slide-content h2, .inverse h2 {
+  color: var(--blue);
+  font-size: 30px;
+}
+
+.remark-slide-content h3, .inverse h3 {
+  color: var(--blue);
+  font-size: 25px;
+}
+
+
+
+.remark-slide-content h1 {
+  padding-bottom: 10px;
+  border-bottom: 8px double var(--blue);
+}
+
+
+
+/* title slide */
+.title-slide {
+  background-color: var(--back);
+  background-image: url("https://lidaidavid.github.io/logo_big.png");
+  background-position: 5% 5%;
+  background-size: 30%;
+  }
+
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+.title-slide h1  {
+  color: var(--orange);
+  font-size: 50px;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 15%;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  border-bottom: 10px double var(--blue);
+}
+.title-slide h2  {
+  color: var(--blue);
+  font-size: 35px;
+  font-weight: 350;
+  text-align: left;
+  margin-left: 5%;
+  margin-top: -25px;
+  padding-bottom: -20px;
+}
+.title-slide h3  {
+  color: var(--blue);
+  font-size: 25px;
+  font-weight: 300;
+  text-align: left;
+  margin-left: 5%;
+  margin-bottom: 0;
+}
+
+/* slide number */
+.remark-slide-number {
+  font-size: 10pt;
+/*  font-family: 'EB Garamond';*/
+  margin-bottom: 12px;
+  margin-right: 10px;
+  color: var(--back);
+  opacity: 1;
+  border-radius: 6px;
+  padding: 6px;
+  background: var(--orange);
+
+}
+
+
+/* code */
+.remark-inline-code {
+  border-radius: 3px;
+  padding: 4px;
+  background: blue;
+  color: red;
+}
+
+
+.remark-code-line-highlighted {
+  background-color: blue;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 3em;
+  padding-right: 4em;
+  font-size: 90%;
+}
+
+@page { margin: 0; }
+@media print {
+  .remark-slide-scaler {
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(1) !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}

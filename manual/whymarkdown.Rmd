@@ -1,0 +1,179 @@
+---
+title: "基于R Markdown的企业研究工作流程的价值提升与成本评估"
+author: "学科产品部"
+date: "`r format(Sys.time(), '%Y.%m.%d')`"
+output: 
+  html_document:
+    css: 
+    theme: lumen
+    highlight: kate
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: false
+---
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+
+<script>
+    window.oncontextmenu = function () {
+        console.log("Right Click Disabled");
+        return false;
+    }
+</script>
+
+```{r setup, include=FALSE}
+# default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+#  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+knitr::opts_chunk$set(echo = TRUE)
+#setwd("C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021 classes/")
+library(quantmod)
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(knitr)
+library(kableExtra)
+
+Sys.setlocale("LC_CTYPE", "Chinese")
+#font <- "STXihei"
+#load("C:/0work/0tal/1 online_db/outputdata.RData")
+options(knitr.kable.NA = '')
+options("getSymbols.warning4.0"=FALSE)
+
+dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/manual/"
+setwd(dir1)
+#dir1 <- "https://lidaidavid.github.io/manual/"
+
+#https://lidaidavid.github.io/3-8products/3-8overview.html
+
+dt <- mtcars[1:5, 1:6]
+```
+
+# 什么是R Markdown？
+
+Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，生成包括HTML、PDF、WORD、PPT等各种形式的内容，制作出美观的、出版级的内容。它可以让编写内容的作者更专注于内容本身。
+
+Markdown的语法简洁明了、学习容易，而且功能比纯文本更强，因此有很多人用它写博客。世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。国内常用的confluence、语雀、简书等诸多应用也都能很好地支持Markdown语言。
+
+R Markdown，是基于Rstudio对Markdown语言的拓展，可以用R语言整合数据分析、图表制作等工作流程，制作动态文档。在学术界和技术企业，R已经成为数据分析的标准工具之一，得到广泛应用与快速迭代。
+
+# R Markdown对企业的价值是什么？
+
+对于工作内容中**数据分析密度较大、以演示文稿或文档为主要交付形式**的企业部门来说，切换到基于R Markdown的工作流程——
+
+## 价值有以下几个方面{.tabset .tabset-fade .tabset-pills}
+
+
+
+### 功能强大
+
++ R Markdown可以制作交互性强的动态文档，让读者自己通过鼠标点击、悬浮、拖拽等形式获取更加丰富的信息，从而提高信息传递的效率。
+
++ R Markdown可以整合ggplot2、plotly等专业制图包，Kable、Stargazer等专业制表包的能力，做出专业、美观、可交互、可读性强的图表，并且精确地设定图表的每一个细节，数据可视化能力远远强于Word、Excel等办公软件提供的功能。
+
++ R Markdown将格式与文本相分离，可以由专业人士设计交付文本的格式，大大提高交付成果的美观程度和专业性。
+
+### 节约时间
+
++ 由于R Markdown把企业研究工作涉及的各个环节模块化，可以便于专业人士从事自己最擅长的环节，从而通过专业分工提高工作效率。例如，交付报告中的数据分析部分可由数据科学家负责，流程图、示意图可使用sketch、figma等专业软件完成制作，文档内容的写作则可以使用专业文本编辑器完成，自动标记不同类型的文本提高效率。三者的整合通过代码组合实现，沟通成本较低。
+
++ 由于R Markdown的本质是代码，可以利用公司的git代码库进行管理，大大便于团队协作、减少沟通成本。例如，可以使用Atom文本编辑器的Teletype功能，实现多人同时编辑同一文档的效果。又如，如果两个人都修改了同一页内容，容易通过git的代码比对发现修改的内容，再通过文本的复制粘贴快速整合双方的修改。如果使用ppt，就可能需要重复其中一个人的劳动，带来不必要的时间浪费。
+
++ 由于R Markdown深度整合了R编程语言的功能，因此可以利用R当中包含的函数消灭简单重复劳动、提高报告写作的准确性，从而节约工作时间。例如，文档的目录、页码、级标题编号和格式可以根据模板设定自动生成，不需要手动添加、检查、纠错；重要的商业数据可以储存为变量统一放置，在写作中引用变量即可，当变量发生变化后不需要逐页寻找数值手动修改，只需要更改最初的变量赋值即可。总之，使用R Markdown可以尽可能杜绝“在同一个地方跌倒”的错误，debug之后同样的错误不会犯两次。
+
++ 由于R Markdown 的本质是代码，便于对更新数据进行重复分析、便于将数据分析工作常态化，从而达到一劳永逸的效果。例如，网校希望研究影响学生转化行为的因素，如果采用办公软件每个季度进行分析，需要投入的时间成本随着次数的增加不会有显著下降；而如果用R Markdown整合工作流程，进行一个季度的分析之后，后续分析只需要更新数据，就能自动输出跟前一季度结构相同的研究报告，大大减少成本投入。
+
+### 拓展性强
+
++ 由于R Markdown的产出物可以是html文档，因此可以直接搭载到服务器上进行发布，并利用成熟的html语言插件代码拓展功能，例如点击量统计、页面阅读时间统计、读者身份追踪等。采用html的形式交付报告，对交付内容的流传更加可控，因而能够提高研究成果的保密性、安全性，采用office套装等办公软件，不一定能实现这些功能。
+
++ R Markdown生成的html文档可以直接转成pdf格式、或者利用浏览器插件一键转成长图文件，从而实现交付报告的格式向下兼容。如果读者不习惯阅读html文档，切换到R Markdown的工作流程可以无缝产出原有产出物的格式，不需要改变读者的阅读习惯。
+
++ R Markdown基础之上发展出了Xaringan（用来制作演示文稿）、Bookdown（用来制作书籍）、Flexboard（用来制作dashboard）等插件，可以以较低的代价在不同格式间进行切换，从而满足不同读者的需求。
+
+# 切换至R Markdown的成本评估
+
+R Markdown的工作流程，需求的组件及相应的成本大概如下所列
+
+1. 最新版本的R和Rstudio，开源软件，免费；
+2. 文本编辑器Atom（或其他文本编辑器，也可以直接在Rstudio中编辑，可选），开源软件，免费；
+3. Sketch（99美元）或Figma（免费），用于画图（figma可以在线协作）；
+4. Git，用于代码管理，集团已有；
+5. 阿里云服务器，用于共享信息、发布文档，集团运维提供（200-300元/月）
+6. 防右键、统计阅读量、统计阅读时长、登记阅读IP等信息，免费添加；
+7. 反爬虫等安全防护功能、搭建FTP提供信息共享功能，集团运维提供；
+8. 接入钉钉、实现用户身份追踪等功能，后续开发，预算6000元以下。
+
+如果延后开发接入钉钉的高阶功能，前期需要投入的资金主要是200-300元/月的服务器运维成本；之后要开发进阶功能，如果参考未来讲坛的产品功能，可以参考其研发报价，价位在6000元左右。
+
+切换至R Markdown的成本主要在前期培训、学习的时间成本。如果团队学习意愿较强、学习能力较强、培训组织得当，可以有效控制这一成本。由于R Markdown中的很多组件可以由专人制作（例如规定格式的css模板、数据分析及可视化的代码），并不强求每一位成员都完全掌握所有工作流程中涉及的技能，因此学习的门槛并不特别高。长远来看，切换工作流程后节约的时间会超出学习的时间投入，因此是有利可图的。
+
+# 案例1：用plotly制作美观、可交互的图示
+
+[plotly的说明文档和更多精彩案例](https://plot.ly/r/)
+
+```{r jhx, echo=FALSE}
+
+# Download some data
+getSymbols(Symbols = c("AAPL", "MSFT"))
+
+ds <- data.frame(Date = index(AAPL), AAPL[,6], MSFT[,6])
+
+p <- plot_ly(ds, x = ~Date) %>%
+  add_lines(y = ~AAPL.Adjusted, name = "Apple") %>%
+  add_lines(y = ~MSFT.Adjusted, name = "Microsoft") %>%
+  layout(
+    title = "Stock Prices",
+    xaxis = list(
+      rangeselector = list(
+        buttons = list(
+          list(
+            count = 3,
+            label = "3 mo",
+            step = "month",
+            stepmode = "backward"),
+          list(
+            count = 6,
+            label = "6 mo",
+            step = "month",
+            stepmode = "backward"),
+          list(
+            count = 1,
+            label = "1 yr",
+            step = "year",
+            stepmode = "backward"),
+          list(
+            count = 1,
+            label = "YTD",
+            step = "year",
+            stepmode = "todate"),
+          list(step = "all"))),
+
+      rangeslider = list(type = "date")),
+
+    yaxis = list(title = "Price"))
+
+p
+```
+
+# 案例2：采用KableExtra实现美观、专业、可交互的表格制作
+
+[KableExtra的说明文档与更多精彩案例](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+
+```{r, echo=FALSE}
+iris[1:10, ] %>%
+  mutate_if(is.numeric, function(x) {
+    cell_spec(x, bold = T, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+  }) %>%
+  mutate(Species = cell_spec(
+    Species, color = "white", bold = T,
+    background = spec_color(1:10, end = 0.9, option = "A", direction = -1)
+  )) %>%
+  kable(escape = F, align = "c") %>%
+  kable_styling(c("striped", "condensed"), full_width = F)
+```

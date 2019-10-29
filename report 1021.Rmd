@@ -14,6 +14,14 @@ output:
 
 ---
 
+
+<script>
+    window.oncontextmenu = function () {
+        console.log("Right Click Disabled");
+        return false;
+    }
+</script>
+
 ```{r setup, include=FALSE}
 # default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
 #  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
@@ -28,9 +36,9 @@ Sys.setlocale("LC_CTYPE", "Chinese")
 #font <- "STXihei"
 load("C:/0work/0tal/1 online_db/outputdata.RData")
 
-#dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021classes/"
+dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021classes/"
 
-dir1 <- "https://lidaidavid.github.io/20191021classes/"
+#dir1 <- "https://lidaidavid.github.io/20191021classes/"
 
 ```
 
@@ -283,6 +291,12 @@ p0
 
 ### 猿辅导
 ```{r p1_yfd, echo=FALSE}
+
+table(dt_gt$unitprice)
+table(dt_wx$unitprice)
+table(dt_zyb$unitprice)
+table(dt_yfd$unitprice)
+
 p1_yfd <- plot_ly(
   x = dt_yfd$class %>% levels(), y = dt_yfd$subject %>% levels(),
   z = m1_yfd, type = "heatmap"
