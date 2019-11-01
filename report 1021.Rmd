@@ -42,7 +42,6 @@ dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021classes/"
 
 ```
 
-# comit? but why
 
 # 课程产品基本形态分类
 
