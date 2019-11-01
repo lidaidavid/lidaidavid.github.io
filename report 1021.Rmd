@@ -2,9 +2,9 @@
 title: "在线大班产品课程体系盘点"
 author: "学科产品中心"
 date: "`r format(Sys.time(), '%Y.%m.%d')`"
-output: 
+output:
   html_document:
-    css: 
+    css:
     theme: united
     highlight: kate
     toc: true
@@ -42,6 +42,8 @@ dir1 <- "C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021classes/"
 
 ```
 
+# comit? but why
+
 # 课程产品基本形态分类
 
 ## 按照网校语言体系对标式盘点
@@ -53,7 +55,7 @@ knitr::include_graphics(dir1 %>% paste("wangxiao1.png", sep = ""))
 ```
 
 网校此前对自己产品线的盘点，体现在下图中
-    
+
 ```{r 网校现有产品, echo=FALSE, fig.cap="网校现有产品", out.width = '100%'}
 knitr::include_graphics(dir1 %>% paste("wangxiao2.png", sep = ""))
 ```
@@ -182,7 +184,7 @@ knitr::include_graphics(dir1 %>% paste("关键参数_yfd3.png", sep = ""))
 高途的模式特色是名师包干制。特色主要有：
 
 + 追求大班额、高定价，核心是名师，名师的点在于“保证提分”。因此，教学标准化低，为凑大班极少分层
-    
+
 + 数据不好的主讲赶紧下课，为了数据好，销售和辅导根据用户反馈不断指导、调教主讲（近乎增长黑客思维）
 
 + 辅导销售动作比重大，专业服务以一对多的标准化服务（例如物料投送）为主
@@ -553,5 +555,3 @@ knitr::kable(diff_zyb)
 ```{r diff_wx, echo=FALSE}
 knitr::kable(diff_wx)
 ```
-
-
