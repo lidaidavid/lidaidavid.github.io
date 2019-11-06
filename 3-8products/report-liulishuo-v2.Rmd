@@ -1,0 +1,484 @@
+---
+title: "赛道黑马？流利说少儿英语单品分析"
+author: "学科产品部"
+date: "`r format(Sys.time(), '%Y.%m.%d')`"
+output:
+  html_document:
+    css:
+    theme: united
+    highlight: kate
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+    fig_caption: no
+    md_extensions: +fenced_divs
+
+
+---
+<script>
+    window.oncontextmenu = function () {
+        console.log("Right Click Disabled");
+        return false;
+    }
+</script>
+
+```{r setup, include=FALSE}
+# default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+#  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+knitr::opts_chunk$set(echo = TRUE)
+#setwd("C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021 classes/")
+getwd()
+
+library(blogdown)
+
+#blogdown::install_hugo()
+
+blogdown::new_site()
+
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(knitr)
+library(kableExtra)
+#library(extrafont)
+Sys.setlocale("LC_CTYPE", "Chinese")
+#font <- "STXihei"
+#load("C:/0work/0tal/1 online_db/outputdata.RData")
+
+dir1 <- "C:/0work/0tal/20190904_kid/liulishuo/"
+dir2 <- "https://lidaidavid.github.io/3-8products/"
+
+# installing/loading the package:
+#if(!require(installr)) { install.packages("installr"); require(installr)} #load / install+load installr
+ 
+# Installing pandoc
+#install.pandoc(use_regex = FALSE)  # The use of use_regex here is due to a change in pandoc download page.  This parameter will not be needed in installr versions after 0.9
+
+
+#markdown::markdownExtensions()
+#dir1 <- "https://lidaidavid.github.io/20191021classes/"
+
+```
+
+# 简报要点
+
+1. 是目前少儿英语赛道产品力最接近斑马英语的产品
+
+1. 如果转变运营思路，很可能成为赛道黑马
+
+1. 课程销售是健身房模式，而斑马是班课模式，模式可能会转型
+
+1. 用社群运营补app短板，从轻服务转重服务
+
+1. 赛道观察：纯内容分发也有价值，但与课程类分属单独赛道，天花板低
+
+# 流利说少儿英语产品体验
+
+
+
+## 产品参数简报
+
+<!-- {.tabset .tabset-fade .tabset-pills} -->
+
+### 销售模式：健身房模式
+
++ 正价：998元 = 400天互动课程 + 180天社群服务
+
++ 盒子：无
+
++ 体验课：7天兴趣营，1元 = 7天内容体验 + 社群主题运营
+
++ 体验课转化福利：
+
+    - 送350元券；
+    - 加vip群，班主任提供精品服务；
+    - 打卡7天送三种礼包，打卡21天送双肩包；
+    - 送配套电子单词卡
+
+### 教研体系：自研SMART教学法
+
++ S：能力素质养成
+
++ M：认知模块构建
+    
++ A：评测促进学习
+    
++ R：高频深度记忆
+    
++ T：主题故事探究
+    
+### 分级对标：4级对标CEFR和CSE
+
++ 课程逻辑：自然拼读
+
++ 课程内容：动画 + 外教 + （语音）互动
+
++ 分级L1、L2: 对标欧洲能力等级标准[CEFR](https://www.zhihu.com/question/41490452) Pre-A1, 中国英语能力等级量表[CSE](https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E8%8B%B1%E8%AF%AD%E8%83%BD%E5%8A%9B%E7%AD%89%E7%BA%A7%E9%87%8F%E8%A1%A8/20204287) L1
+
++ 分级L3、L4: 对标欧洲能力等级标准[CEFR](https://www.zhihu.com/question/41490452) A1, 中国英语能力等级量表[CSE](https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E8%8B%B1%E8%AF%AD%E8%83%BD%E5%8A%9B%E7%AD%89%E7%BA%A7%E9%87%8F%E8%A1%A8/20204287) L2
+
+
+
+## 产品体验
+
+总体感受：课程产品完成度较高，制作精良；拓展内容比较单薄，只有儿歌mv，用于磨耳朵的绘本跟读、动画资源等较少
+
+
+### 互动课程
+
+---
+
+:::: {style="display: grid; grid-template-columns: 6fr 2fr; grid-column-gap: 10px;"}
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls1.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+1. 每个级别的课程分若干单元，线性前进。课程没有明显的时间进度安排，不是班课的模式
+
+:::
+
+::::
+
+---
+
+:::: {style="display: grid; grid-template-columns: 6fr 2fr; grid-column-gap: 10px;"}
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls2.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+2. 前课完成后每天自动解锁新课时，家长可以手动解锁新课时。课程类型包括：letters, words, stories, games, showtime（儿歌跟读）
+
+:::
+
+::::
+
+---
+
+:::: {style="display: grid; grid-template-columns: 6fr 2fr; grid-column-gap: 10px;"}
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls3.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+3. 真人外教（Dr. Crazy）融入动画视频进行教学
+
+:::
+
+::::
+
+---
+
+:::: {style="display: grid; grid-template-columns: 6fr 2fr; grid-column-gap: 10px;"}
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls4.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+4. 结合点击、拖动、跟读进行互动，语音评分非常严格
+
+:::
+
+::::
+
+---
+
+:::: {style="display: grid; grid-template-columns: 6fr 2fr; grid-column-gap: 10px;"}
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls5.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+5. 互动奖励钻石，没有商城,不知道钻石的实际用途
+
+:::
+
+::::
+
+---
+
+### 社群运营
+
+```{r, echo=FALSE, include=FALSE}
+base <- 100
+turn <- 22
+tuo <- 5
+rate1 <- ((turn / base) %>% round(2)) * 100
+rate2 <- (((turn - tuo) / (base - tuo)) %>% round(2)) * 100
+```
+
+
+
+总体感受：运营比较专业、标准化，不输斑马，可以看到很多物料用以补充正经app的短板（缺少绘本、缺少纠音），群聊、私聊和朋友圈运营结合得比较立体。这些优势在app里面完全看不到，可能是运营过程中迭代出来的，还没有被想好怎么整合到宣发里面去。根据群中晒单推测，转化率在`r rate1`%以上（11月5日14：20钱毛毛之前，`r turn`个晒单，共约`r base`个家长。假设有`r tuo`个托，转化率也在`r rate2`%左右）
+
+---
+
+:::: {style="display: grid; grid-template-columns: 3fr 3fr 3fr; grid-column-gap: 10px;"}
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls11.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls12.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls13.png", sep = ""))
+```
+
+:::
+
+::::
+
+:::: {style="display: grid; grid-template-columns: 3fr 3fr 3fr; grid-column-gap: 10px;"}
+
+::: {}
+
+1. 管理群秩序，防止无关广告
+
+:::
+
+::: {}
+
+2. 补充绘本内容，弥补app内容短板
+
+:::
+
+::: {}
+
+3. 示范发音靠外教视频，无私人服务
+
+:::
+
+::::
+
+---
+
+
+:::: {style="display: grid; grid-template-columns: 3fr 3fr 3fr; grid-column-gap: 10px;"}
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls14.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls15.png", sep = ""))
+```
+
+:::
+
+::: {}
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("lls16.png", sep = ""))
+```
+
+:::
+
+::::
+
+:::: {style="display: grid; grid-template-columns: 3fr 3fr 3fr; grid-column-gap: 10px;"}
+
+::: {}
+
+4. 外教是流利说教研团队成员，经验丰富，会讲口型、会说中文
+
+:::
+
+::: {}
+
+5. 群中大量分析学员成果，确保效果外化
+
+:::
+
+::: {}
+
+6. 群中大量分析低龄英语学习知识，凸显专业性
+
+:::
+
+::::
+
+### 家长结构
+
+```{r, echo=FALSE, include=FALSE}
+
+dt <- read_xlsx(dir1 %>% paste("parents.xlsx", sep = ""))
+
+colnames(dt) <- c("id", "sex", "city", "age")
+
+table(dt$city)
+mom <- ((1 - mean(dt$sex, na.rm = T)) %>% round(2)) * 100
+age <- (mean(dt$age, na.rm = T)) %>% round(2)
+reported <- sum(!is.na(dt$age))
+  
+reported_city <- sum(!is.na(dt$city)) 
+
+```
+
+
+家长群有100个家长，群主要求每个人改名为孩子“昵称-爸爸/妈妈-城市-宝宝年龄”。只有部分家长改了名字。根据家长改的名字和家长的个人名片信息，推断家长的分布，得到以下信息
+
+1. 家长以妈妈为主，女性用户占比达到`r mom`%
+
+1. 孩子年龄偏大，感觉越是低线家长孩子年龄越大（有`r reported`个家长说了孩子年龄，平均`r age`岁），说明发达地区家长的教育意识比较先进（或者更焦虑）
+
+1. 城市比较分散，有`r reported_city`个家长的城市比较可信，其中 上海、深圳家长比例大，其他家长以二三线城市居多
+
+```{r, echo=FALSE, include=TRUE}
+
+city <- table(dt$city) %>% as.data.frame() %>% arrange(desc(Freq))
+
+label <- c("城市", "数量")
+
+city %>% knitr::kable(escape = F, col.names = label) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, font_size = 12, fixed_thead = list(enabled = T, background = "#DAEAFC")) %>%
+  scroll_box(width = "100%", height = "200px")
+
+```
+
+# 产品反思
+
+## 产品组件
+
+```{r, echo=FALSE, out.width='90%', fig.align='center'}
+# guide https://dr-harper.github.io/rmarkdown-cookbook/multi-column-layout.html
+knitr::include_graphics(dir2 %>% paste("liulishuoyingyucomp.png", sep = ""))
+```
+
+流利说的产品构成比较简单，正课包括数字内容（一年400天有效期） + 配套社群服务（180天有效期），此外还有少量（59）用于磨耳朵的儿歌视频可以免费观看。
+
+跟斑马相比，流利说缺失两个组件：
+
+1. 缺乏盒子，没有点读笔这样的杀手级道具。目前流利说的运营手法是打卡送礼品、体验课续报送礼品，不如盒子简单直接。此外，盒子送大量绘本，给用户不断更新的期待、制造线下亲子共读的场景、培优孩子阅读习惯同时保护视力，这些卖点都因而缺失。
+
+> 流利说班主任：（斑马）内容和学习方式和我们一模一样，然后他把4个阶段分成6个阶段，社群的服务周期是一个月一轮，群内没有什么有价值的资料和服务，都是灌输一些理念，2800一年贵在一只点读笔，其他都一样的。
+
+2. 没有持续更新的免费内容。斑马除了绘本、儿歌之外，还有首页banner位的“斑马频道”短视频、tv直播课、课程序列不定期更新的特殊免费课程（例如，国庆档推出5个制作精良的英语短视频，外教参观博物馆等有趣的景点，带孩子长见识）。这些内容的价值在于：
+
+    + 用户希望有更多拓展内容来满足孩子磨耳朵的需求（正课每天15分钟是远远不够的），而app也有用免费内容圈用户、占领用户使用场景的需求。
+    
+    + 不断更新的内容，提供更多与家长接触的触点，不断制造惊喜与期待，小概率诞生用户的“Aha!时刻”，给家长以口碑传播的理由。而且这些内容可以根据用户的反馈快速迭代产品，为产品不断升级提供数据支撑。正课内容一经制作完成，要进行迭代的成本非常高、节奏比较慢，因而不够敏捷。
+    
+> 亲身经验：地铁上家长给孩子看国庆特别节目的视频，可以感到内容明显偏难，孩子不能完全听懂。但是视频制作精良时尚，家长自己看得津津有味，而且满足了她让孩子有事可干不哭不闹的需求。视频结束后，像其他课程一样有跟读、识字的quiz，小孩居然正确读出了dinosaur、computer、rocket等词，而且也找到了正确的照片。这对家长和旁观者来说就是“Aha!时刻”——没有期待孩子能看懂，但是居然能念对、认对高级单词，可见斑马的教学有超预期的效果。
+
+跟斑马相比，流利说做的比较好的是：
+
+1. 在群里有外教发的发音示范视频，会讲小朋友能听懂的发音诀窍（“如何发出自然拼读中an的发音呢？嘴巴张开，露出大大的笑容……”）。看动画片是看不明白正确发音的肌肉运动的，真人外教面部特写+技巧讲授对家长来说能真正解决问题。加分项：该外教会说中文，而且显然有面授小朋友的经验，表情很有感染力
+
+1. 社群运营发的资料比较有信息量，物料设计比较精美，而且体验课的每一天安排了主题活动，不是枯燥的重复打卡（小朋友快来念字母a发到群里，给机器人增加能量！）。而且大量补充的绘本、儿歌视频、其他英语资料，弥补了app优质内容不足的缺陷，给人感觉整个产品变得比较丰满
+
+> 用户： 每天晚上的故事绘本后面在app会有吗？流利说班主任：之后app更新会有的
+培优学前核心家长：老师能不能给推荐一些绘本、益智游戏或者题之类的？上完课给孩子做的东西太少了，（因为知识点太少）重复来重复去孩子很快就厌倦了。网上卖的东西很多，但是不知道适不适合自己孩子，是太难了还是太简单了。（老师推荐了数独和何秋光的一套书，家长如果有类似需要可以跟主讲老师直接说）
+
+
+## 模式反思
+
+### 健身房模式：介于班课模式与DVD模式之间
+
+目前英语赛道的app能看到至少3种销售模式：
+
+1. 班课模式。案例：斑马英语。分期开班，课程按日期解锁。用户购买的是一定时间的课程和辅导服务。购课量是确定的，如果没有按时到课，买到的课程仍然可以永远回放观看（但是半年/一年的时间周期和课程自身的级别不一定是匹配的，因此要上完一个级别可能得至少购课超过半年）。
+
+1. 健身房模式。案例：流利说少儿英语。随时开始上课，用户购买的是一定时间的app使用权限以及一定时间的辅导服务。如果每天完课，app会次日自动解锁一两节新课；如果前日未完课，次日新课不会自动解锁。完课后家长可以手动解锁后面的课程（通过计算乘法答题），所以如果一个家长比较勤快，理论上说一次购课可以解锁全部授课内容。但是课程不能无限回放，400天到了之后就不能使用app了。此时的班主任角色类似健身教练，因为社群95名左右的家长进度不一，辅导老师没有进度可以参考，只能进行泛泛的指导，对重点用户进行私教。
+
+1. DVD模式。案例：叽里呱啦。叽里呱啦购买的是完整的课程（L
+1课程、L2课程），可以无限回放，什么时候怎么看取决于家长自己。由于没有配辅导，这种模式买的就是内容，没有配套服务。一种变体是购买课时，例如RunFox（剑桥小镇），充值买课时，课时上什么课由用户自己决定（例如，购买60课时，可以花其中40课时上A课，20课时上B课，自行安排）。本质上这种模式就是用app作为分销渠道销售优质内容，对用户的管理最弱、服务也很难做。
+
+哪一种模式是最优模式？我们的思考是：
+
+1. DVD模式要配服务的成本最高，因而现阶段以内容分发为主。由于不配辅导，跟用户触点少、反馈缺失，产品迭代不敏捷，跟用户的亲密度也不够。此外，互联网时代用户对优质内容付费的意愿比较低，也让这类产品面临较低的天花板。不但其他模式的产品在给用户赠送免费内容，还要面临来自各大视频平台、电视台优质内容的竞争，定价非常困难。总之，优质内容是有价值的，但是直接销售不一定是现阶段变现的最优模式，总体而言不看好。
+
+1. 班课模式是最接近直播的模式。正像K12大班课直播跟录播比是更优的模式；班课模式跟DVD模式比也有很多优点。最明显的是容易搭配辅导、同步进行社群服务，从而形成模拟大班直播课运营的社群运营模式。此外，由于课程有时间性，用户会感到更强的参与感。尽管主体课程是录播/AI课，但是斑马每周会安排TV直播课（可能是伪直播），增强用户参与感的体验。而且由于购课之后课程可以无限回放，跟DVD模式相比有得无失，在不考虑价格的情况下对于用户来说一定是更优的选择。
+
+1. 健身房模式下，可以搭配辅导，但是由于用户进度不同步，辅导的运营难度有所提高。这一点的影响有待评估，因为即使是斑马式的班课，系统班把使用周期拉长了之后家长同步的程度有多强也值得怀疑。而且由于3-8岁入口孩子的程度相差非常大、没有学校学年制在外部提供强制的同步力量，班课模式下用户耗散的可能性也非常大。所以，健身房模式在辅导运营的难度上来说跟班课模式差别不一定特别大，缺失的主要是班级参与感（也可以通过创新性的运营来弥补）。总之，班课模式对企业降低运营成本有一定价值，但是在3-8赛道这一价值的大小有待验证。
+
+### 尚未成熟的运营思路
+
+流利说现在的运营思路是：
+
+1. 通过1元体验课提供7天训练营，配重服务打动家长。7天时间，每天安排主题活动，发放大量物料，给家长洗脑.目前判断转化效果还是比较理想的，转化率在`r rate1`% 到 `r rate2`% 之间。要知道，这是在没有盒子、1元低价的体验课上，按理来说漏斗口子放得非常大，这个转化率水平相当高。
+
+1. 班主任运营95个家长，规模较大。由于同步性比较弱，目前流利说的思路是：
+
+    + 许诺辅导老师会看后台数据，根据学生进度进行针对性发放学习资料
+    
+    + 增加小班授课的进阶版，辅导老师提供一对一服务，一年的价格提升到2000元以上
+    
+据我们推测，前者可能是根据学生在app的数据利用算法给辅导老师推送辅导建议，辅导老师只需要按照算法建议把标准化的辅导物料给到相应用户就可以了。
+
+例如，算法发现学生在字母l的发音尤其困难，可以建议辅导老师给用户私聊发送专门教学字母l的物料，用户会觉得非常有针对性，而只要学习过程和物料的数据库建立得当，要实现这一功能非常容易。
+
+后者实质上就是学习斑马的小班运营思路，许诺重服务，同时把目前过低的价格提到斑马的水位。
+
+总之，目前流利说的运营已经呈现出不错的状态，跟斑马英语标准化的社群运营相比并不逊色，而问题在于由于流利说标榜自己AI的属性，在宣传时对社群辅导的推销力度不够大，让没有购买过体验课的用户根本意识不到。转变宣发思路，改进运营玩法，可能会给流利说少儿英语的获客量带来较大提升。
+
+# 结论：流利说能否华丽转身成为（更好的）斑马？
+
+总之，对流利说少儿英语下一步的产品迭代和运营转向值得密切关注。
+
++ 在叽里呱啦、叮咚课堂、葡萄英语、波比英语、ABCMouse、多纳学英语、RunFox、洪恩绘本、伴鱼绘本（一对一）等一系列产品当中，流利说少儿英语在产品力和产品模式上是最接近斑马英语的产品，因而很可能成为下一匹赛道黑马。
+
++ 流利说少儿英语承接成人版的导流（导的是年轻、时尚、高知家长）和品牌，有可能形成协同效应。转变宣发重点、改进运营思路，流利说少儿英语可能迎来一波快速增长。
+
++ 流利说目前的短板主要在配套优质内容上。数字内容方面，短板可以通过引入IP等方式（类似叽里呱啦引入迪士尼资源进行轻度重新开发）快速弥补。实物内容方面，由于盒子几乎已经成为行业标配，流利说如果认为数据印证了盒子的价值，也不难做出及格的产品。
