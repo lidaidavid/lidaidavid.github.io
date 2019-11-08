@@ -13,6 +13,7 @@ output:
     number_sections: true
     fig_caption: no
     md_extensions: +fenced_divs
+    self_contained: no
 
 
 ---
@@ -28,13 +29,19 @@ output:
 #  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
 knitr::opts_chunk$set(echo = TRUE)
 #setwd("C:/Users/david/Documents/GitHub/lidaidavid.github.io/20191021 classes/")
-getwd()
+#getwd()
 
-library(blogdown)
+      
+#    pandoc_args: [
+#    "-M", "toc-title=Table des matières"
+#  ]
+
+
+#library(blogdown)
 
 #blogdown::install_hugo()
 
-blogdown::new_site()
+#blogdown::new_site()
 
 library(tidyverse)
 library(readxl)
@@ -238,7 +245,7 @@ knitr::include_graphics(dir2 %>% paste("lls5.png", sep = ""))
 
 ```{r, echo=FALSE, include=FALSE}
 base <- 100
-turn <- 22
+turn <- 35
 tuo <- 5
 rate1 <- ((turn / base) %>% round(2)) * 100
 rate2 <- (((turn - tuo) / (base - tuo)) %>% round(2)) * 100
@@ -246,7 +253,7 @@ rate2 <- (((turn - tuo) / (base - tuo)) %>% round(2)) * 100
 
 
 
-总体感受：运营比较专业、标准化，不输斑马，可以看到很多物料用以补充正经app的短板（缺少绘本、缺少纠音），群聊、私聊和朋友圈运营结合得比较立体。这些优势在app里面完全看不到，可能是运营过程中迭代出来的，还没有被想好怎么整合到宣发里面去。根据群中晒单推测，转化率在`r rate1`%以上（11月5日14：20钱毛毛之前，`r turn`个晒单，共约`r base`个家长。假设有`r tuo`个托，转化率也在`r rate2`%左右）
+总体感受：运营比较专业、标准化，不输斑马，可以看到很多物料用以补充正经app的短板（缺少绘本、缺少纠音），群聊、私聊和朋友圈运营结合得比较立体。这些优势在app里面完全看不到，可能是运营过程中迭代出来的，还没有被想好怎么整合到宣发里面去。根据群中晒单推测，转化率在`r rate1`%以上（`r turn`个晒单，共约`r base`个家长。假设有`r tuo`个托，转化率也在`r rate2`%左右）
 
 ---
 
